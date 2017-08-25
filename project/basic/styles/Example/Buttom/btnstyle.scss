@@ -1,0 +1,27 @@
+@charset "UTF-8";
+@import "compass/css3";
+@import "compass/reset";
+
+
+$GloabIfIe8:true!global;
+
+
+@import "../../component/Buttom/_btnstyle.scss";
+
+
+
+.btn{
+  padding: 0.5em 1em;
+  @include btnStyle();
+
+}
+
+
+
+
+
+
+
+
+
+

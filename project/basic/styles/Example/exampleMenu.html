@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]--> <!--IE6-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"> <![endif]--> <!--IE7-->
+<!--[if IE 8]><html class="no-js lt-ie9"> <![endif]--> <!--IE8-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->  <!--IE9-->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!--当前页面所应该采用的 IE 版本-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <!--目前只有360浏览器支持此 <meta> 标签，国产浏览器默认采用高速模式渲染页面-->
+    <title>模板汇总</title>
+
+    <meta name="description" content="">
+    <style>
+        *{
+            margin: 0px; padding: 0px;
+        }
+        .js-menu span{
+            display: block; cursor: pointer; border-bottom: 1px solid royalblue;
+            padding: 0px 1em;
+        }
+        .js-menu span:hover{
+            color: #2f51d3;
+        }
+    </style>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="stylesheet" href="../../frontframe/miniui/themes/default/miniui.css">
+
+
+</head>
+
+<body style="width:100%;height:100%;">
+
+    <div class="mini-layout" style="width:100%;height:100%;">
+
+
+        <div  region="west" width="200" >
+
+            <ul class="js-menu">
+
+                <li>
+                    <span href="miniui/resetMiniInput.html">mini的input样式重置</span>
+                </li>
+
+                <li>
+                    <span href="Buttom/btnstyle.html">按钮样式</span>
+                </li>
+
+            </ul>
+        </div>
+
+        <div title="center" region="center"  >
+
+            <div id="tabs1" class="mini-tabs"
+                 style="width:100%;height:100%;"
+                    >
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+</body>
+
+<script>
+    // Avoid `console` errors in browsers that lack a console.
+    (function() {
+        var method;
+        var noop = function () {};
+        var methods = [
+            'assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error',
+            'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log',
+            'markTimeline', 'profile', 'profileEnd', 'table', 'time', 'timeEnd',
+            'timeStamp', 'trace', 'warn'
+        ];
+        var length = methods.length;
+        var console = (window.console = window.console || {});
+
+        while (length--) {
+            method = methods[length];
+
+            // Only stub undefined methods.
+            if (!console[method]) {
+                console[method] = noop;
+            }
+        }
+    }());
+</script>
+
+<script type="text/javascript" src="../../scripts/jquery.1.7.2.min.js"></script>
+<script type="text/javascript" src="../../frontframe/miniui/miniui.js"></script>
+
+<script>
+
+    $(function(){
+
+
+        mini.parse();
+
+        var tabs = mini.get("tabs1");
+
+
+        $(".js-menu span").click(function(){
+            var url = $(this).attr("href");
+            addTab(url);
+        })
+
+        function addTab(url) {
+
+            var tab = {
+                url: url,
+                showCloseButton: true
+            };
+            tabs.addTab(tab);
+            tabs.activeTab(tab);
+        }
+
+    });
+
+
+</script>
+</html>
+
+

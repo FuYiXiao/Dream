@@ -1,0 +1,54 @@
+
+//输出按钮的样式
+@mixin btnStyle($color:#fff,$bgcolor:#96d4ff){
+
+  $borderColor:darken($bgcolor,15%);
+
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  @include border-radius(4px);
+
+  color: $color;
+  background-color: $bgcolor;
+  border:1px solid $borderColor;
+
+  &,
+  &:active,
+  &.active {
+    &:focus,
+    &.focus {
+      background-color: darken($bgcolor,25%);
+      border-color: darken($borderColor,25%);
+      @include box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+    }
+  }
+
+  &:hover,
+  &:focus,
+  &.focus {
+    text-decoration: none;
+    background-color: darken($bgcolor,15%);
+    border-color: darken($borderColor,15%);
+  }
+
+  &:active,
+  &.active {
+    outline: 0;
+    background-color: darken($bgcolor,25%);
+    border-color: darken($borderColor,25%);
+    @include box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+  }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    cursor:not-allowed;
+    @include opacity(.65);
+    @include box-shadow(none);
+  }
+}

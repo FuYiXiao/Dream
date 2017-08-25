@@ -1,0 +1,117 @@
+@charset "UTF-8";
+@import "compass/css3";
+
+//清楚浮动
+@mixin clearfix(){
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+//屏幕尺寸响应布局
+@mixin max-screen($mediaType:screen,$maxWidth:970px){
+  @media only #{$mediaType} and ( max-width: $maxWidth )
+  {
+    @content;
+  }
+}
+
+//屏幕尺寸响应布局
+@mixin min-screen($mediaType:screen,$minWidth:970px){
+  @media only #{$mediaType} and ( min-width: $minWidth )
+  {
+    @content;
+  }
+}
+//字体转换
+@mixin formerStandard($pxSize,$fontSize:"font-size") {
+  #{$fontSize}: #{$pxSize / 100}em;
+  #{$fontSize}: #{$pxSize / 100}rem;
+}
+.clearfix{
+  @include clearfix;
+}
+//兼容IE8的图片100%显示的函数
+//IE8背景滤镜
+@mixin backgroundsize($imgUrl,$htmlUrl:""){
+    background: url($imgUrl) no-repeat center/100% 100% ;
+    @at-root .lt-ie9 &{
+      background: none;
+      @if $htmlUrl == "" {
+        filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="#{$imgUrl}", sizingMethod="scale");
+      } @else {
+        filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="#{$htmlUrl}", sizingMethod="scale");
+      }
+    }
+}
+/*使用图片替换文字,该容器必须有自己的高度*/
+.hideword {
+  background-color: transparent;
+  border: 0;
+  overflow: hidden;
+  *text-indent: -9999px; /* IE 6/7  */
+  &:before {
+    content: " ";
+    display: block;
+    width: 0;
+    height: 150%;
+  }
+}
+//按钮移入移出的简单设置
+@mixin btnSet($colorfont,$bgcolor){
+  cursor: pointer;
+  color: $colorfont;
+  background-color: $bgcolor;
+  border: 1px solid darken($bgcolor,10%);
+  &:hover{
+    background-color: lighten($bgcolor,10%);
+    border: 1px solid $bgcolor;
+  }
+  &.active{
+    background-color: darken($bgcolor,10%);
+    border: 1px solid darken($bgcolor,20%);
+    &.active:hover{
+      background-color: lighten($bgcolor,10%);
+      border: 1px solid $bgcolor;
+    }
+  }
+}
+//图片当作背景按照指定高度宽度输出
+@mixin imgWidthHeight($imgUrl) {
+  width: image_width($imgUrl);
+  height:image_height($imgUrl);
+  background-image: url($imgUrl);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+//兼容IE8的背景图片白分百满屏显示  $htmlUrl 是HTML文档和图片之间的路径关系，通常设置为绝对路径
+@mixin backgroundFull($imgUrl,$htmlUrl:""){
+    background: url($imgUrl) no-repeat center/100% 100% ;
+    @at-root .lt-ie9 &{
+      background: none;
+      @if $htmlUrl == "" {
+        filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="#{$imgUrl}", sizingMethod="scale");
+      } @else {
+        filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="#{$htmlUrl}", sizingMethod="scale");
+      }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

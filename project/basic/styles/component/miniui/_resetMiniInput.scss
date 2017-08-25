@@ -1,0 +1,89 @@
+@charset "UTF-8";
+
+
+
+
+
+//miniUi的输入框样式重置
+@mixin resetMiniInput(
+  $color:#000,$height:30px,$fontSize:16px,
+  $backColor:#fff,$borderColor:#666){
+
+    .mini-textbox{
+      height: $height + 2;
+    }
+    .mini-textbox-border{
+      height: $height;
+      border-color: $borderColor;
+      background: $backColor;
+      @include border-radius(2px);
+    }
+    .mini-textbox-input{
+      box-sizing:border-box;
+      font-size: $fontSize;
+      height: $height;
+      line-height: $height;
+      padding: 0px 0.5em;
+      color: $color;
+    }
+    .mini-textbox-focus .mini-textbox-border{
+      border-color: darken($borderColor,15%);
+    }
+    @if( global-variable-exists(GloabIfIe8)) {
+      @if( $GloabIfIe8) {
+        .mini-placeholder-label{
+          height: $height;
+          line-height: $height;
+          padding: 0px 0.5em;
+          font-size: $fontSize;
+          box-sizing:border-box;
+        }
+      }
+    }
+
+}
+
+
+//miniUi的输入框样式重置
+@mixin resetMiniCombo(
+  $color:#000,$height:30px,$fontSize:16px,
+  $backColor:#fff,$borderColor:#666){
+
+  .mini-buttonedit{
+    height: $height + 2;
+  }
+  .mini-buttonedit-border{
+    height: $height;
+    border-color: $borderColor;
+    background: $backColor;
+    @include border-radius(2px);
+  }
+  .mini-buttonedit-input{
+    box-sizing:border-box;
+    font-size: $fontSize;
+    height: $height;
+    line-height: $height;
+    padding: 0px 0.5em;
+    color: $color;
+  }
+  .mini-buttonedit-buttons{
+    top: ($height - 18px)/2;
+  }
+  .mini-buttonedit-hover .mini-buttonedit-button{
+    border: none; padding: 1px;
+  }
+  @if $GloabIfIe8 {
+    .mini-placeholder-label{
+      height: $height;
+      line-height: $height;
+      padding: 0px 0.5em;
+      font-size: $fontSize;
+      box-sizing:border-box;
+    }
+  }
+
+}
+
+
+
+
